@@ -48,9 +48,9 @@ jazoo@localhost:2181:/$ pwd
 Returns list of nodes by path
 ```
 jazoo@localhost:2181:/$ ls -l
-/dir1
-/dir2
-/dir3
+172	0	2019-08-30 15:54:37   /dir1
+172	0	2019-08-30 15:54:37   /dir2
+172	0	2019-08-30 15:54:37   /dir3
 
 
 jazoo@localhost:2181:/$ ls
