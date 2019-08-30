@@ -2,12 +2,17 @@
 
 jazoo - is a modern cli for zookeeper base on spring-shell.
 
+## Debug run (for developers)
+```
+mvn spring-boot:run -Dspring.run.arguments=--server=localhost:2182
+```
+
 ## Build
 ```
 git clone https://github.com/vbabaev/jazoo.git
 cd jazoo
 mvn clean package
-java -jar target/jazoo-*.jar --server localhost:2181
+java -jar target/jazoo-*.jar --server=localhost:2181
 jazoo@localhost:2181:/$ pwd
 /
 ```
