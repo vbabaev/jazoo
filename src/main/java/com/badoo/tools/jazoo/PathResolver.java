@@ -29,6 +29,27 @@ public class PathResolver {
         return "/" + String.join("/", stack);
     }
 
+    public static String basename(String path) {
+        String[] parts = path.split("/");
+        StringBuilder stringBuilder = new StringBuilder("");
+        for (int i = 1; i < parts.length - 1; i++) {
+            stringBuilder.append("/").append(parts[i]);
+        }
+        return stringBuilder.toString();
+    }
+
+    public static String join(String basename, String filename)
+    {
+        return basename + (basename.equals("/") ? "": "/") + filename;
+    }
+
+
+    public static String filename(String path)
+    {
+        String result = path.replaceAll(basename(path), "");
+        return result.isEmpty() ? "/" : result;
+    }
+
     public String resolve(String path) {
         String resolved;
         if (path.startsWith("/")) {

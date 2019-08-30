@@ -9,8 +9,11 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Scope("singleton")
@@ -28,8 +31,13 @@ public class ZooKeeperConnection {
     }
 
     public List<String> list(String path) throws KeeperException, InterruptedException {
-        return this.keeper.getChildren(path, (w) -> {
+        List<String> children = this.keeper.getChildren(path, (w) -> {
         });
+        if (children.size() > 0) {
+            return children.stream().map(name -> PathResolver.join(path, name)).collect(Collectors.toList());
+        } else {
+            return Collections.singletonList(path);
+        }
     }
 
     public String stat(String path) throws KeeperException, InterruptedException {
