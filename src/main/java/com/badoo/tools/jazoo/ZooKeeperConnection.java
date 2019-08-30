@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -23,11 +22,15 @@ public class ZooKeeperConnection {
 
     private final ZooKeeper keeper;
 
-    public ZooKeeperConnection(@Value("${server}") String server, @Value("${timeout:10000}") int timeout) throws IOException {
+    public ZooKeeperConnection(@Value("${server:localhost}") String server, @Value("${timeout:10000}") int timeout) throws IOException {
         System.out.println("Zookeeper server:" + server);
         System.out.println("Zookeeper connection timeout:" + timeout);
-        this.keeper = new ZooKeeper(server, timeout, (a) -> {
-        });
+        this.keeper = new ZooKeeper(server, timeout, (a) -> { });
+        try {
+            this.keeper.exists("/",(a) -> {});
+        } catch (Exception e) {
+            throw new RuntimeException("Cannot connect to " + server);
+        }
     }
 
     public List<String> list(String path) throws KeeperException, InterruptedException {
@@ -52,7 +55,7 @@ public class ZooKeeperConnection {
         });
     }
 
-    public String data(String path)throws KeeperException, InterruptedException {
+    public String data(String path) throws KeeperException, InterruptedException {
         return new String(this.keeper.getData(path, false, null));
     }
 }

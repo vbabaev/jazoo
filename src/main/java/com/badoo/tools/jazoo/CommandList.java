@@ -24,6 +24,7 @@ public class CommandList {
     public List<String> list(@ShellOption(value = {"-l", "--long"}, arity = 0) boolean fullNames,
                              @ShellOption(value = "", defaultValue = "") String path
     ) throws KeeperException, InterruptedException {
+
         if (path.equals("")) {
             path = resolver.getCurrent();
         }

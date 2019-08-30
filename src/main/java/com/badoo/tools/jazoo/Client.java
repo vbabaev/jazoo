@@ -19,7 +19,7 @@ public class Client {
     }
 
     @Bean
-    public PromptProvider myPromptProvider(PathResolver pathResolver, @Value("${server}") String server) {
+    public PromptProvider myPromptProvider(PathResolver pathResolver, @Value("${server:localhost}") String server) {
         return () -> new AttributedString("jazoo@" + server + ":" + pathResolver.getCurrent() + "$ ", AttributedStyle.DEFAULT.foreground(AttributedStyle.YELLOW));
     }
 
