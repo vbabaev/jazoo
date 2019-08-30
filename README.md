@@ -12,7 +12,7 @@ jazoo@localhost:2181:/$ pwd
 /
 ```
 
-##Supported functionality
+## Supported functionality
 
 ### cd $path
 Sets current directory to $path
