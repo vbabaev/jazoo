@@ -47,7 +47,8 @@ public class PathResolver {
     public static String filename(String path)
     {
         String result = path.replaceAll(basename(path), "");
-        return result.isEmpty() ? "/" : result;
+        if (result.equals("/")) return result;
+        return result.substring(1);
     }
 
     public String resolve(String path) {
