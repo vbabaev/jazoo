@@ -28,9 +28,20 @@ public class CommandList {
             path = resolver.getCurrent();
         }
         String resolved_name = resolver.resolve(path);
+        this.connection.list(resolved_name).forEach(n -> {
+            System.out.println("DEBUG: " + resolved_name + " " + n);
+        });
         Stream<String> stringStream = this.connection.list(resolved_name).stream().sorted();
         if (fullNames) {
-            stringStream = stringStream.map(name -> resolved_name + (resolved_name.equals("/") ? "" : "/") + name);
+            stringStream = stringStream
+                    .map(name -> resolved_name + (resolved_name.equals("/") ? "" : "/") + name)
+                    .map(full_name -> {
+                        try {
+                            return connection.stat(full_name) + "\t" + full_name;
+                        } catch (KeeperException | InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                    });
         }
         return stringStream.collect(Collectors.toList());
     }
