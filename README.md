@@ -19,6 +19,14 @@ jazoo@localhost:2181:/$ pwd
 
 ## Supported functionality
 
+### cat $path
+Prints contents of the given znode
+```
+jazoo@localhost:2181:/$ cat logs/log-001
+log_line_1: err
+log_line_1: inf
+```
+
 ### cd $path
 Sets current directory to $path
 ```
