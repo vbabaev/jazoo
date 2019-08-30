@@ -22,7 +22,7 @@ public class CommandList {
 
     @ShellMethod(key = "ls", value = "Returns a list of sub-nodes from the given node")
     public List<String> list(@ShellOption(value = {"-l", "--long"}, arity = 0) boolean fullNames,
-                             @ShellOption(defaultValue = "") String path
+                             @ShellOption(value = "", defaultValue = "") String path
     ) throws KeeperException, InterruptedException {
         if (path.equals("")) {
             path = resolver.getCurrent();

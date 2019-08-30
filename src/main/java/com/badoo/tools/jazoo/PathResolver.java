@@ -19,7 +19,7 @@ public class PathResolver {
         Stack<String> stack = new Stack<>();
         for (String part: parts) {
             if (part.isEmpty()) continue;
-            if (part.equals("\\.")) continue;
+            if (part.equals(".")) continue;
             if (part.equals("..")) {
                 stack.pop();
                 continue;
