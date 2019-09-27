@@ -1,5 +1,7 @@
-package com.badoo.tools.jazoo;
+package com.badoo.tools.jazoo.command;
 
+import com.badoo.tools.jazoo.PathResolver;
+import com.badoo.tools.jazoo.ZooKeeperConnection;
 import org.apache.zookeeper.KeeperException;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
