@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -57,8 +58,14 @@ public class ZooKeeperConnection {
     }
 
     public List<String> listChildren(String path) throws KeeperException, InterruptedException {
-        return this.keeper.getChildren(path, (w) -> {
-        }).stream().map(name -> PathResolver.join(path, name)).collect(Collectors.toList());
+        try {
+            List<String> children = this.keeper.getChildren(path, (w) -> {});
+            List<String> result = new ArrayList<>();
+            children.forEach(name -> result.add(PathResolver.join(path, name)));
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public void delete(String path) throws KeeperException, InterruptedException {
