@@ -1,4 +1,4 @@
-package com.badoo.tools.jazoo;
+package dev.vbabaev.tools.jazoo;
 
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Scope("singleton")
@@ -59,7 +58,8 @@ public class ZooKeeperConnection {
 
     public List<String> listChildren(String path) throws KeeperException, InterruptedException {
         try {
-            List<String> children = this.keeper.getChildren(path, (w) -> {});
+            List<String> children = this.keeper.getChildren(path, (w) -> {
+            });
             List<String> result = new ArrayList<>();
             children.forEach(name -> result.add(PathResolver.join(path, name)));
             return result;

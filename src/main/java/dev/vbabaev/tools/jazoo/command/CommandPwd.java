@@ -1,6 +1,6 @@
-package com.badoo.tools.jazoo.command;
+package dev.vbabaev.tools.jazoo.command;
 
-import com.badoo.tools.jazoo.PathResolver;
+import dev.vbabaev.tools.jazoo.PathResolver;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 

@@ -1,4 +1,4 @@
-package com.badoo.tools.jazoo;
+package dev.vbabaev.tools.jazoo;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;

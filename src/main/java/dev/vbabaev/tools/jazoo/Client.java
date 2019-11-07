@@ -1,4 +1,4 @@
-package com.badoo.tools.jazoo;
+package dev.vbabaev.tools.jazoo;
 
 import org.jline.utils.AttributedString;
 import org.jline.utils.AttributedStyle;

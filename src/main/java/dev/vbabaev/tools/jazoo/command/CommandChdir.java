@@ -1,12 +1,10 @@
-package com.badoo.tools.jazoo.command;
+package dev.vbabaev.tools.jazoo.command;
 
-import com.badoo.tools.jazoo.PathResolver;
-import com.badoo.tools.jazoo.ZooKeeperConnection;
+import dev.vbabaev.tools.jazoo.PathResolver;
+import dev.vbabaev.tools.jazoo.ZooKeeperConnection;
 import org.apache.zookeeper.KeeperException;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
-
-import java.util.List;
 
 @ShellComponent
 public class CommandChdir {
